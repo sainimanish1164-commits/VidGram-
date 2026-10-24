@@ -1,6 +1,8 @@
 node_modules/
 build/
 dist/
+dev-dist/
+.playwright-cli/
 coverage/
 .DS_Store
 *.log
