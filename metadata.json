@@ -1,0 +1,6 @@
+{
+  "name": "VidGram",
+  "description": "Modern Android-ready social media platform for short-form Reels, photo sharing, real-time messaging, creator analytics, and verified monetization.",
+  "requestFramePermissions": ["camera", "microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
