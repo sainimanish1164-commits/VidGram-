@@ -3,6 +3,11 @@ build/
 dist/
 dev-dist/
 .playwright-cli/
+android/.gradle/
+android/local.properties
+android/app/build/intermediates/
+android/app/build/tmp/
+android/capacitor-cordova-android-plugins/build/
 coverage/
 .DS_Store
 *.log

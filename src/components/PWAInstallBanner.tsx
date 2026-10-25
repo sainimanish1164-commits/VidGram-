@@ -72,44 +72,64 @@ export const AndroidInstallModalTrigger: React.FC<{ compact?: boolean }> = ({ co
             </div>
 
             <div className="mt-4 space-y-4 text-sm text-slate-600 dark:text-slate-300">
+              <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+                <h3 className="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
+                  <Download className="w-4 h-4 text-rose-500" />
+                  <span>1. Direct Native Android APK (com.vidgram.social)</span>
+                </h3>
+                <p className="mt-1 text-xs leading-relaxed">
+                  Download the compiled Capacitor Android debug package (
+                  <code className="font-mono text-slate-800 dark:text-slate-200">app-debug.apk</code>, minSdk 24 / targetSdk 36) directly to your Android device and open it to install VidGram.
+                </p>
+                <div className="mt-3">
+                  <a
+                    href="/vidgram-debug.apk"
+                    download="VidGram-debug.apk"
+                    className="inline-flex items-center justify-center gap-2 px-4 py-2.5 min-h-[44px] rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-semibold transition-colors"
+                  >
+                    <Download className="w-4 h-4 shrink-0" />
+                    <span>Download VidGram APK (app-debug.apk)</span>
+                  </a>
+                </div>
+              </div>
+
               <div>
                 <h3 className="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                  1. Instant Android WebAPK Installation (No USB Required)
+                  <span>2. Instant Android WebAPK Installation (Browser Menu)</span>
                 </h3>
                 <p className="mt-1 text-xs leading-relaxed">
                   {isIOS
                     ? 'On Safari, tap Share in the bottom toolbar and choose Add to Home Screen.'
-                    : 'Open this VidGram URL in Chrome on Android, tap the browser menu (⋮), and select "Install app". Android compiles a native WebAPK launcher with standalone full-screen navigation and offline service worker support.'}
+                    : 'Open this VidGram URL in Chrome on Android, open the three-dot browser menu, and select "Install app" for standalone full-screen navigation.'}
                 </p>
               </div>
 
               <div>
                 <h3 className="font-semibold text-slate-900 dark:text-white flex items-center gap-2">
                   <Terminal className="w-4 h-4 text-rose-500" />
-                  2. Package Native Android `.apk` (Capacitor / TWA CLI)
+                  <span>3. Rebuild Locally via Capacitor &amp; Gradle</span>
                 </h3>
                 <p className="mt-1 text-xs leading-relaxed">
-                  Export the project source code and run these commands locally with Android SDK installed to produce `app-release.apk`:
+                  The Capacitor Android workspace (
+                  <code className="font-mono text-slate-800 dark:text-slate-200">capacitor.config.ts</code> and{' '}
+                  <code className="font-mono text-slate-800 dark:text-slate-200">android/</code>) is pre-configured in this project:
                 </p>
                 <pre className="mt-2 p-3 rounded-xl bg-slate-950 text-slate-200 font-mono text-xs overflow-x-auto border border-slate-800">
-{`npm install
-npm run build
-npx @capacitor/cli init VidGram com.vidgram.social --web-dir dist
-npm install @capacitor/core @capacitor/android
-npx cap add android
+{`npm run build
 npx cap sync android
 cd android && ./gradlew assembleDebug
-# Output APK: android/app/build/outputs/apk/debug/app-debug.apk`}
+# Generated APK: android/app/build/outputs/apk/debug/app-debug.apk`}
                 </pre>
               </div>
 
               <div>
                 <h3 className="font-semibold text-slate-900 dark:text-white">
-                  3. Firebase Console Setup for Email/Password & Storage
+                  4. Firebase Console Setup for Email/Password &amp; Storage
                 </h3>
                 <p className="mt-1 text-xs leading-relaxed">
-                  Google Sign-In and Firestore Zero-Trust rules are already provisioned. To enable Email/Password registration or Cloud Storage video buckets in your Firebase Console (`ultra-protocol-75v9p`), open Authentication → Sign-in method → Enable Email/Password, and Storage → Get Started.
+                  Google Sign-In and Firestore Zero-Trust rules are already provisioned. To enable Email/Password registration or Cloud Storage video buckets in your Firebase Console (
+                  <code className="font-mono text-slate-800 dark:text-slate-200">ultra-protocol-75v9p</code>), open Authentication &rarr; Sign-in method &rarr; Enable Email/Password, and Storage &rarr; Get Started.
                 </p>
               </div>
             </div>

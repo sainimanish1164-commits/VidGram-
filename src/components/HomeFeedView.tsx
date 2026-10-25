@@ -272,7 +272,11 @@ export const HomeFeedView: React.FC<HomeFeedViewProps> = ({
                           type="button"
                           aria-label={`Report post by ${post.authorUsername}`}
                           onClick={() =>
-                            onOpenReport(post.mediaType, post.id, `@${post.authorUsername}'s ${post.mediaType}`)
+                            onOpenReport(
+                              post.mediaType === 'reel' ? 'reel' : 'post',
+                              post.id,
+                              `@${post.authorUsername}'s ${post.mediaType}`
+                            )
                           }
                           className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded-xl text-slate-400 hover:text-rose-500"
                         >
